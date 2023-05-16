@@ -1,1 +1,1 @@
-## Official code for "A Two-stage Reinforcement Learning-based Approach For Multi-entity Task Allocation"
+## Official code for "A Two-stage Reinforcement Learning-based Approach for Multi-entity Task Allocation"
