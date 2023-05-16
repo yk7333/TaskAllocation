@@ -4,7 +4,6 @@ import torch.nn as nn
 import itertools
 import collections
 import random
-import matplotlib.pyplot as plt
 
 class ManagerReplayBuffer:
     def __init__(self, capacity):
@@ -34,8 +33,6 @@ class Embedding(nn.Module):
         x = self.fc1(x)
         x = self.relu(x)
         x = self.fc2(x)
-        # x = self.relu(x)
-        # x = self.fc4(x)
         return x.reshape(-1,self.hidden_dim)
     
 class ManagerNet(nn.Module):
@@ -126,7 +123,7 @@ class Manager:
         critic_loss.backward() 
         self.critic_optimizer.step()
 
-        avail_agents.scatter_(0,actions,1)  #保存的是next_state的avail_agents,因此在当前state下的avail_agents需要补上被选中的agents
+        avail_agents.scatter_(0,actions,1) 
         probs = self.net.actor(states,avail_agents)
         log_probs = th.log(probs + 1e-8)
         entropy = -th.sum(probs * log_probs, dim=1, keepdim=True)  

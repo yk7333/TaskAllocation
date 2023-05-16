@@ -3,6 +3,7 @@ from utils import moving_average
 import argparse
 from envs.Almighty import Almighty
 import matplotlib.pyplot as plt
+import os 
 
 parser = argparse.ArgumentParser(description='Allocations')
 parser.add_argument('--buffer_size', type=int, default=1000)
@@ -20,7 +21,7 @@ parser.add_argument('--epsilon_low', type=float, default=0.01)
 parser.add_argument('--tau', type=float, default=0.005)
 parser.add_argument('--device',default="cuda:2")
 parser.add_argument('--evaluate',action='store_true')
-parser.add_argument('--model_dir',default="./models/327")
+parser.add_argument('--model_dir',default="./models/Almighty")
 parser.add_argument('--manager_buffer_size', type=int, default=1000)
 parser.add_argument('--manager_min_size', type=int, default=100)
 parser.add_argument('--manager_batch_size', type=int, default=1)
@@ -40,6 +41,7 @@ args.agent_num,args.agent_dim = env.agent_type.shape
 args.task_num = env.task_num
 args.task_dim = env.task_dim
 args.agent_type = env.agent_type
+os.makedirs(args.model_dir, exist_ok=True)
 if args.pre:
     print("training with pre-assign")
     alg = Allocation(args)

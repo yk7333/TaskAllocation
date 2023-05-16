@@ -21,9 +21,9 @@ parser.add_argument('--epsilon', type=float, default=1)
 parser.add_argument('--decay_rate', type=float, default=0.9999)
 parser.add_argument('--epsilon_low', type=float, default=0.01)
 parser.add_argument('--tau', type=float, default=0.005)
-parser.add_argument('--device',default="cuda:5")
+parser.add_argument('--device',default="cuda:3")
 parser.add_argument('--evaluate',action='store_true')
-parser.add_argument('--model_dir',default="./models/53_self")
+parser.add_argument('--model_dir',default="./models/RBF_random")
 parser.add_argument('--manager_buffer_size', type=int, default=1000)
 parser.add_argument('--manager_min_size', type=int, default=100)
 parser.add_argument('--manager_batch_size', type=int, default=32)
@@ -47,6 +47,7 @@ args.agent_num,args.agent_dim = env.agent_type.shape
 args.task_num = env.task_num
 args.task_dim = env.task_dim
 args.agent_type = env.agent_type
+os.makedirs(args.model_dir, exist_ok=True)
 information = args.info
 selfish = args.selfish
 preassign = not args.nopre

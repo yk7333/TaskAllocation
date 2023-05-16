@@ -52,8 +52,6 @@ class Allocation:
             action_list=[]
             returns = 0
         if render:
-            # if len(self.worker.actor_loss_list)>0:
-                # print("worker actor loss: {}".format(self.worker.actor_loss_list[-1])," worker critic loss: {}".format(self.worker.critic_loss_list[-1]))
             if len(self.manager.actor_loss_list)>0:
                 print("manager{} actor loss: {}".format(task_id,self.manager.actor_loss_list[-1])," manager{} critic loss: {}".format(task_id,self.manager.critic_loss_list[-1]))
                 print("manager{} accepts this task!".format(task_id)," allocation",action_list," return:",returns)
@@ -87,7 +85,6 @@ class Allocation:
         return allocation
 
 
-    #manager的step, action是选出某一个agent去做任务
     def manager_step(self,action,task_id):
         true_action = self.agent_type[action]
         self.task[task_id][1:] = self.task[task_id][1:] - true_action[1:]
@@ -192,7 +189,6 @@ class AllocationWoPre:
         return allocation
 
 
-    #manager的step, action是选出某一个agent去做任务
     def manager_step(self,action,task_id):
         true_action = self.agent_type[action]
         self.task[task_id][1:] = self.task[task_id][1:] - true_action[1:]

@@ -5,7 +5,6 @@ from utils import moving_average
 import matplotlib.pyplot as plt
 import argparse
 import os
-import imageio
 
 parser = argparse.ArgumentParser(description='Allocations')
 parser.add_argument('--buffer_size', type=int, default=1000)
@@ -47,6 +46,7 @@ args.agent_num,args.agent_dim = env.agent_num,env.agent_dim
 args.task_num = env.task_num
 args.task_dim = env.task_dim
 args.agent_type = env.agent_type
+os.makedirs(args.model_dir, exist_ok=True)
 information = args.info
 selfish = args.selfish
 preassign = not args.nopre
@@ -149,7 +149,6 @@ else:
     avail_task = np.ones(env.task_num)
     last_allocation = [[] for _ in range(env.task_num)]
     while not done:  
-        env.render()
         if sum(avail_task)>0:  
             allocation = alg.select(state,avail_task)
             for idx,each in enumerate(last_allocation):
@@ -168,15 +167,6 @@ else:
         returns += reward
         last_allocation = allocation
 
-    frames = []
-    
-    ls = os.listdir("./img")
-    ls.sort()
-    for image_name in ls: 
-        image_name = ",/img/" + image_name 
-        frames.append(imageio.imread(image_name))
-
-    imageio.mimsave("./res_{}.gif".format(information), frames, fps=3) 
     print("zero-shot total return:{} length:{}!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!".format(returns,env.epoch))
     print("now start few-shot")
     return_list = []
