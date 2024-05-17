@@ -1,6 +1,8 @@
 ## A Two-stage Reinforcement Learning-based Approach for Multi-entity Task Allocation
 The official code for the paper "A Two-stage Reinforcement Learning-based Approach for Multi-entity Task Allocation". This repository contains all the environments and all the code for our algorithm.
-![img](overview.png)
+
+![imga](overview.png)
+
 # 1. Requirements
 Run the following command to install the necessary dependencies.
 ```
@@ -43,3 +45,4 @@ python main_RBF.py --evaluate --model_dir=YOU_MODEL_PATH
 ```
 If you want to evaluate the zero-shot and few-shot performences, you can change the properties and numbers of entities and tasks in ```./envs```.
 
+![gif](RBF.gif)
