@@ -1,6 +1,6 @@
 ## A Two-stage Reinforcement Learning-based Approach for Multi-entity Task Allocation
 The official code for the paper "A Two-stage Reinforcement Learning-based Approach for Multi-entity Task Allocation". This repository contains all the environments and all the code for our algorithm.
-
+![img](overview.png)
 # 1. Requirements
 Run the following command to install the necessary dependencies.
 ```
