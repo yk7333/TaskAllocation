@@ -41,9 +41,5 @@ If you want to load checkpoint from the model path, simply running the following
 ```
 python main_RBF.py --evaluate --model_dir=YOU_MODEL_PATH
 ```
-If you want to evaluate the zero-shot and few-shot performences, run:
-```
-python main_RBF.py --evaluate --model_dir=YOU_MODEL_PATH
-```
-You can change the properties and numbers of entities and tasks in ```./envs```.
+If you want to evaluate the zero-shot and few-shot performences, you can change the properties and numbers of entities and tasks in ```./envs```.
 
