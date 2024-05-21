@@ -25,7 +25,6 @@ class Embedding(nn.Module):
         self.fc1 = nn.Linear(input_dim,hidden_dim)
         self.fc2 = nn.Linear(hidden_dim,hidden_dim)
         self.relu = th.relu
-        self.fc4 = nn.Linear(hidden_dim,hidden_dim)
         self.hidden_dim = hidden_dim
 
     def forward(self,x):
