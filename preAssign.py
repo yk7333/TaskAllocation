@@ -94,13 +94,13 @@ class PreAssignCritic(nn.Module):
 class MIX(nn.Module):
     def __init__(self,agent_dim,hidden_dim):
         super(MIX,self).__init__()
-        self.q =  nn.Sequential(nn.Linear(agent_dim,hidden_dim),nn.LeakyReLU(0.1),nn.Linear(hidden_dim,hidden_dim))
-        self.k =  nn.Sequential(nn.Linear(agent_dim,hidden_dim),nn.LeakyReLU(0.1),nn.Linear(hidden_dim,hidden_dim))
-        self.v1 = nn.Sequential(nn.Linear(agent_dim,hidden_dim),nn.LeakyReLU(0.1),nn.Linear(hidden_dim,hidden_dim))
-        self.v2 = nn.Sequential(nn.Linear(agent_dim,hidden_dim),nn.LeakyReLU(0.1),nn.Linear(hidden_dim,1))
-        self.fc = nn.Sequential(nn.Linear(hidden_dim,hidden_dim),nn.LeakyReLU(0.1),nn.Linear(hidden_dim,1))
+        self.q =  nn.Sequential(nn.Linear(agent_dim,hidden_dim),nn.ReLU(),nn.Linear(hidden_dim,hidden_dim))
+        self.k =  nn.Sequential(nn.Linear(agent_dim,hidden_dim),nn.ReLU(),nn.Linear(hidden_dim,hidden_dim))
+        self.v1 = nn.Sequential(nn.Linear(agent_dim,hidden_dim),nn.ReLU(),nn.Linear(hidden_dim,hidden_dim))
+        self.v2 = nn.Sequential(nn.Linear(agent_dim,hidden_dim),nn.ReLU(),nn.Linear(hidden_dim,1))
+        self.fc = nn.Sequential(nn.Linear(hidden_dim,hidden_dim),nn.ReLU(),nn.Linear(hidden_dim,1))
         self.hidden_dim = hidden_dim
-        self.relu = nn.LeakyReLU(0.1)
+        self.relu = nn.ReLU()
 
     def forward(self,agent_type,value,avail_agents):     #agent_type:batch_size,agent_num,agent_dim  value:batch_size,agent_num
         agent_type = agent_type*avail_agents.unsqueeze(-1)  #batch_size,agent_num,agent_dim
