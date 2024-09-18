@@ -6,7 +6,7 @@ The official code for the paper "A Two-stage Reinforcement Learning-based Approa
 # 1. Requirements
 Run the following command to install the necessary dependencies.
 ```
-git clone https://github.com/yk7333/d3po.git
+git clone https://github.com/yk7333/TaskAllocation.git
 cd TaskAllocation
 pip install -r requirements.txt
 ```
